@@ -40,12 +40,12 @@ To build and run the Docker container for this Streamlit application, follow the
    After the image is built, run the following command to start the container:
 
    ```
-   docker run -p 8501:8501 streamlit-app
+   docker run -p 8502:8501 streamlit-app
    ```
 
 3. **Access the Application**
 
-   Open a web browser and go to `http://localhost:8501` to access the Streamlit application.
+   Open a web browser and go to `http://localhost:8502` to access the Streamlit application.
 
 ## Usage
 
