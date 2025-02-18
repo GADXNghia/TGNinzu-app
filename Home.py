@@ -17,13 +17,13 @@ def main():
         if set(df.columns) == set(["スナップショット日","GA企業担当者","GA企業担当者部署","取引先: 企業名","従業員数ランク","TG在籍人数"]):
             st.write("データは正しい形式です")
         else:
-            st.write("データ形式が正しくありません。正しいデータをアップロードしてください")
+            st.write("データ形式が正しくありません。正しいデータをアップロードしてください。")
 
         df["スナップショット日"] = pd.to_datetime(df["スナップショット日"])
         df["スナップショット月"] = df["スナップショット日"].dt.strftime("%Y-%m")
 
         if set(df.columns) == set(["スナップショット日","GA企業担当者","GA企業担当者部署","取引先: 企業名","従業員数ランク","TG在籍人数","スナップショット月"]):
-            pivot = df.pivot_table(index=["GA企業担当者部署","GA企業担当者"],columns="スナップショット月",values="スナップショット日",aggfunc="count",fill_value=0)
+            pivot = df.pivot_table(index=["GA企業担当者部署","GA企業担当者"],columns=["スナップショット月", "従業員数ランク"],values="スナップショット日",aggfunc="count",fill_value=0)
             pivot = pivot.sort_values(by="GA企業担当者部署",ascending=False)
             st.header("GA企業担当者部署ごとのデータ数:")
             st.dataframe(pivot)
